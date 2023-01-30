@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/player/projectile/base_projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/projectiles/bullets.png" type="Texture" id=2]
+[ext_resource path="res://scenes/effects/small_explosion.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[node name="AssaultClassProjectile" instance=ExtResource( 1 )]
+damage = 3
+move_speed = 120
+shake_life_time = 0.25
+shake_strength = 0.25
+explosion_effect = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 8 )
+
+[node name="Collision" parent="." index="1"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Notifier" parent="." index="2"]
+scale = Vector2( 0.1, 0.1 )
